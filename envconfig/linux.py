@@ -7,6 +7,8 @@ apt_conf = "/etc/apt/apt.conf"
 bash_conf = os.path.join(os.environ['HOME'], ".bashrc")
 
 def is_configured(config_file, config_str):
+    if not os.path.exists(config_file):
+        return False
     with open(config_file, "r") as f:
         lines = f.readlines()
         for line in lines:
