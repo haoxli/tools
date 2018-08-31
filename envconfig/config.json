@@ -1,0 +1,14 @@
+{
+    "name": "env_config",
+    "author": "Li Hao",
+    "email": "hao.x.li@intel.com",
+    "linux": {
+        "proxy": "",
+        "port": "",
+        "apt_lists": [
+            "net-tools", "openssh-server",
+            "git", "gcc", "g++", "cmake",
+            "curl", "vim", "python-pip", "pylint"
+        ]
+    }
+}
