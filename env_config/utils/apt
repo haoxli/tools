@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+function apt_install() {
+    sudo apt -y install $1
+    if [ $? -ne 0 ]; then
+        echo ">>> $1 install failed"
+    else
+        echo ">>> $1 install succeed"
+    fi
+}
+
+function apt_lock_remove() {
+   list_lock="/var/lib/apt/lists/lock"
+   if [ -f ${list_lock} ]; then
+       sudo rm -rf ${list_lock}
+   fi
+   #arch_lock="/var/cache/apt/archives/lock"
+   #if [ -f ${arch_lock} ]; then
+   #    sudo rm -rf ${arch_lock}
+   #fi
+}
+
+function apt_update() {
+    sudo apt update
+    if [ $? -ne 0 ]; then
+        echo ">>> apt update fail"
+        # remove apt lock
+        apt_lock_remove
+        exit 1
+    fi
+}
+
+function apt_fix_broken() {
+    sudo apt --fix-broken install
+}

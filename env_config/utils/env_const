@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Ubuntu 18.04 LTS
+
+BASH_CONF="$HOME/.bashrc"
+
+DEV_TOOLS="$HOME/devtools"
